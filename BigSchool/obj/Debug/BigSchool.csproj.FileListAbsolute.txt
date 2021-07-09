@@ -107,3 +107,11 @@ C:\Tinh\MonHoc\TH_LapTrinhWeb\BigSchool\BigSchool\obj\Debug\BigSchool.csproj.Gen
 C:\Tinh\MonHoc\TH_LapTrinhWeb\BigSchool\BigSchool\obj\Debug\BigSchool.Migrations.CreateTableCourse.resources
 C:\Tinh\MonHoc\TH_LapTrinhWeb\BigSchool\BigSchool\obj\Debug\BigSchool.Migrations.InsertDataTheFirst.resources
 C:\Tinh\MonHoc\TH_LapTrinhWeb\BigSchool\BigSchool\obj\Debug\BigSchool.Migrations.AddNameColumnToApplicationUser.resources
+C:\Tinh\MonHoc\TH_LapTrinhWeb\BigSchool\BigSchool\obj\Debug\BigSchool.csproj.AssemblyReference.cache
+C:\Tinh\MonHoc\TH_LapTrinhWeb\BigSchool\BigSchool\obj\Debug\BigSchool.Migrations.AddAttendance.resources
+C:\Tinh\MonHoc\TH_LapTrinhWeb\BigSchool\BigSchool\bin\System.Net.Http.Formatting.dll
+C:\Tinh\MonHoc\TH_LapTrinhWeb\BigSchool\BigSchool\bin\System.Web.Http.dll
+C:\Tinh\MonHoc\TH_LapTrinhWeb\BigSchool\BigSchool\bin\System.Web.Http.WebHost.dll
+C:\Tinh\MonHoc\TH_LapTrinhWeb\BigSchool\BigSchool\bin\System.Net.Http.Formatting.xml
+C:\Tinh\MonHoc\TH_LapTrinhWeb\BigSchool\BigSchool\bin\System.Web.Http.xml
+C:\Tinh\MonHoc\TH_LapTrinhWeb\BigSchool\BigSchool\bin\System.Web.Http.WebHost.xml
