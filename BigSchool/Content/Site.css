@@ -44,7 +44,7 @@ textarea {
 
 .course > li {
     position: relative;
-    margin-bottom: 30px;
+    margin: 30px 0px;
 }
 
 .course > li .date {
@@ -59,4 +59,10 @@ textarea {
     position: absolute;
     top: 0;
     left: 70px;
+}
+
+ul > li button {
+    position: absolute;
+    top: 0;
+    left: 190px;
 }

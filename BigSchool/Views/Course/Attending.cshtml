@@ -1,9 +1,11 @@
 ﻿@model  BigSchool.ViewModel.CoursesViewModel
-@using Microsoft.AspNet.Identity
-@using System.Collections.Generic;
+
 @{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Attending";
+    
 }
+
+<h2>Attending</h2>
 
 <div class="row">
     <ul class="course">
@@ -31,14 +33,7 @@
                     </div>
                     <span class="category">
                         @course.Category.Name
-                    </span>
-                    @if (Model.ShowAction)
-                    {
-                        <button data-course-id="@course.Id" class="btn btn-default btn-sm js-toggle-attendance">
-                            Going?
-                        </button>
-                    }
-                    
+                    </span> 
                 </div>
 
             </li>
@@ -70,7 +65,7 @@
                     .done(function () {
                         button
                             .text('Following')
-                            .removeClass("btn-default")
+                            .removeClass("btn-default")                                                        
                         alert('Following Success!');
                     })
                     .fail(function () {
