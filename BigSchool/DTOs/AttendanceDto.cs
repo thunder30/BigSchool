@@ -8,5 +8,6 @@ namespace BigSchool.DTOs
     public class AttendanceDto
     {
         public int CourseId { get; set; }
+        public bool Status { get; set; }
     }
 }

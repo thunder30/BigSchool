@@ -114,5 +114,6 @@ C:\Tinh\MonHoc\TH_LapTrinhWeb\BigSchool\BigSchool\obj\Debug\BigSchool.csproj.Cor
 C:\Tinh\MonHoc\TH_LapTrinhWeb\BigSchool\BigSchool\obj\Debug\BigSchool.csproj.CopyComplete
 C:\Tinh\MonHoc\TH_LapTrinhWeb\BigSchool\BigSchool\obj\Debug\BigSchool.dll
 C:\Tinh\MonHoc\TH_LapTrinhWeb\BigSchool\BigSchool\obj\Debug\BigSchool.pdb
-C:\Tinh\MonHoc\TH_LapTrinhWeb\BigSchool\BigSchool\obj\Debug\BigSchool.csproj.AssemblyReference.cache
 C:\Tinh\MonHoc\TH_LapTrinhWeb\BigSchool\BigSchool\obj\Debug\BigSchool.Migrations.AddFollowingTable.resources
+C:\Tinh\MonHoc\TH_LapTrinhWeb\BigSchool\BigSchool\obj\Debug\BigSchool.Migrations.AddIsCanceledColumnToCourse.resources
+C:\Tinh\MonHoc\TH_LapTrinhWeb\BigSchool\BigSchool\obj\Debug\BigSchool.csproj.AssemblyReference.cache

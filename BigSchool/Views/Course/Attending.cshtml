@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Attending";
-    
+    var listLecturer = (List<BigSchool.Models.Following>)ViewBag.ListLecturer;
 }
 
 <h2>Attending</h2>
@@ -25,9 +25,16 @@
                         @course.Lecturer.Name
                         @if (Model.ShowAction)
                         {
-                            <a class="btn btn-default btn-sm js-toggle-follow" data-user-id="@course.LecturerId">
-                                Follow
-                            </a>
+                            if (listLecturer.Any(x => x.FolloweeId == course.LecturerId))
+                            {
+                                <a>Following</a>
+                            }
+                            else
+                            {
+                                <a class="btn btn-default btn-sm js-toggle-follow" data-user-id="@course.LecturerId">
+                                    Follow
+                                </a>
+                            }
                         }
 
                     </div>

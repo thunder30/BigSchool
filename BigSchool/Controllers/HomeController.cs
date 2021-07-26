@@ -23,7 +23,7 @@ namespace BigSchool.Controllers
             var upComingCourses = _dbContext.Courses
                 .Include(c => c.Lecturer)
                 .Include(c => c.Category)
-                .Where(c => c.DateTime > DateTime.Now);            
+                .Where(c => c.DateTime > DateTime.Now && !c.IsCanceled);            
 
             var viewModel = new CoursesViewModel
             {
@@ -31,6 +31,18 @@ namespace BigSchool.Controllers
                 ShowAction = User.Identity.IsAuthenticated
             };
 
+            //danh sach giang vien dang theo doi            
+            var userId = User.Identity.GetUserId();
+            var listLecturer = _dbContext.Followings.Where(x => x.FollowerId == userId && x.FolloweeId != userId)
+                .Include(l => l.Followee)
+                .ToList();
+            ViewBag.ListLecturer = listLecturer;
+
+            //danh sach khoa hoc dang tham gia
+            var listCourse = _dbContext.Attendances.Where(x => x.AttendeeId == userId).ToList();
+            ViewBag.ListCourse = listCourse;
+
+            #region api Attending
             //var userId = User.Identity.GetUserId();
             //if (User.Identity.IsAuthenticated)
             //{
@@ -41,10 +53,12 @@ namespace BigSchool.Controllers
             //        // kiểm tra đã theo đăng kí khoá học này chưa
             //        bool b = _dbContext.Attendances.Any(x => x.AttendeeId == userId && x.CourseId == )
             //    }
-                
+
             //}
 
             //if (_dbContext.Attendances.Any())
+
+            #endregion
 
             return View(viewModel);
         }

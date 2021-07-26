@@ -178,6 +178,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Api\CoursesController.cs" />
     <Compile Include="Controllers\AttendancesController.cs" />
     <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\FollowingsController.cs" />
@@ -212,6 +213,10 @@
     <Compile Include="Migrations\202107140449511_AddFollowingTable.Designer.cs">
       <DependentUpon>202107140449511_AddFollowingTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202107210616455_AddIsCanceledColumnToCourse.cs" />
+    <Compile Include="Migrations\202107210616455_AddIsCanceledColumnToCourse.Designer.cs">
+      <DependentUpon>202107210616455_AddIsCanceledColumnToCourse.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -237,6 +242,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\site.css" />
+    <Content Include="Scripts\bootbox.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
@@ -289,6 +295,7 @@
     <Content Include="Views\Course\Create.cshtml" />
     <Content Include="Views\Course\Attending.cshtml" />
     <Content Include="Views\Course\Mine.cshtml" />
+    <Content Include="Views\Course\LecturerFollowing.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -326,6 +333,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202107140449511_AddFollowingTable.resx">
       <DependentUpon>202107140449511_AddFollowingTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107210616455_AddIsCanceledColumnToCourse.resx">
+      <DependentUpon>202107210616455_AddIsCanceledColumnToCourse.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

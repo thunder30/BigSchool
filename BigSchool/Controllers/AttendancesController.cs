@@ -46,15 +46,26 @@ namespace BigSchool.Controllers
         {
 
             var userId = User.Identity.GetUserId();
-            if (_dbContext.Attendances.Any(a => a.AttendeeId == userId && a.CourseId == attendanceDto.CourseId))
-                return BadRequest("The Attendance already exits!");
-            var attendance = new Attendance
+            // Status = true -> đăng ký tham gia khoá học
+            if (attendanceDto.Status)
             {
-                CourseId = attendanceDto.CourseId,
-                AttendeeId = userId
-            };
+                if (_dbContext.Attendances.Any(a => a.AttendeeId == userId && a.CourseId == attendanceDto.CourseId))
+                    return BadRequest("The Attendance already exits!");
+                var attendance = new Attendance
+                {
+                    CourseId = attendanceDto.CourseId,
+                    AttendeeId = userId
+                };
+                _dbContext.Attendances.Add(attendance);
 
-            _dbContext.Attendances.Add(attendance);
+            }
+            else
+            {
+                // Status = false -> Huỷ khoá học
+                var model = _dbContext.Attendances.SingleOrDefault(x => x.AttendeeId == userId && x.CourseId == attendanceDto.CourseId);
+                _dbContext.Attendances.Remove(model);
+            }            
+            
             _dbContext.SaveChanges();
             return Ok();
         }

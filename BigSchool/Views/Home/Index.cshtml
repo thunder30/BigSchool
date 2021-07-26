@@ -3,6 +3,9 @@
 @using System.Collections.Generic;
 @{
     ViewBag.Title = "Home Page";
+    var listLecturer = (List<BigSchool.Models.Following>)ViewBag.ListLecturer;
+    var listCourse = (List<BigSchool.Models.Attendance>)ViewBag.ListCourse;
+
 }
 
 <div class="row">
@@ -23,9 +26,18 @@
                         @course.Lecturer.Name
                         @if (Model.ShowAction)
                         {
-                            <a class="btn btn-default btn-sm js-toggle-follow" data-user-id="@course.LecturerId">
-                                Follow
-                            </a>
+                            // kiem tra danh sach giang vien theo doi
+                            if (listLecturer.Any(x => x.FolloweeId == course.LecturerId))
+                            {
+                                <a href="#" class="js-toggle-unfollow" data-user-id="@course.LecturerId">Following</a>
+                            }
+                            else
+                            {
+                                <a href="#" class="btn btn-default btn-sm js-toggle-follow" data-user-id="@course.LecturerId">
+                                    Follow
+                                </a>
+                            }
+
                         }
 
                     </div>
@@ -34,9 +46,18 @@
                     </span>
                     @if (Model.ShowAction)
                     {
-                        <button data-course-id="@course.Id" class="btn btn-default btn-sm js-toggle-attendance">
-                            Going?
-                        </button>
+                        //Kiểm tra khoá học này đã tham gia chưa
+                        if(listCourse.Any(x => x.CourseId == course.Id))
+                        {
+                            <a href="#" data-course-id="@course.Id" class="js-toggle-unattendance">Going</a>
+                        }
+                        else
+                        {
+                            <a href="#" data-course-id="@course.Id" class="btn btn-default btn-sm js-toggle-attendance">
+                                Going?
+                            </a>
+                        }
+                        
                     }
                     
                 </div>
@@ -49,13 +70,15 @@
 {
     <script>
         $(document).ready(function () {
+            //going course
             $(".js-toggle-attendance").click(function (e) {
+                e.preventDefault();
                 var button = $(e.target);
-                $.post("/api/Attendances", { courseId: button.attr("data-course-id") })
+                $.post("/api/Attendances", { courseId: button.attr("data-course-id"), status: true })
                     .done(function () {
                         button
-                            .removeClass("btn-default")
-                            .addClass("btn-info")
+                            .addClass('js-toggle-unattendance')
+                            .removeClass('btn btn-default btn-sm js-toggle-attendance')                            
                             .text("Going");
                         alert("Going Success!");
                     })
@@ -64,14 +87,54 @@
                     });
             });
 
-            $('.js-toggle-follow').click(function (e) {
+            //cancel going course
+            $(".js-toggle-unattendance").click(function (e) {
+                e.preventDefault();
                 var button = $(e.target);
-                $.post("/api/Followings", { followeeId: button.attr('data-user-id') })
+                $.post("/api/Attendances", { courseId: button.attr("data-course-id"), status: false })
                     .done(function () {
                         button
-                            .text('Following')
-                            .removeClass("btn-default")
+                            .addClass('btn btn-default btn-sm js-toggle-attendance')
+                            .removeClass('js-toggle-unattendance')                                                      
+                            .text("Going?");
+                        alert("Cancel Going Success!");
+                    })
+                    .fail(function () {
+                        alert("Something failed!");
+                    });
+            });
+
+            //follow
+            $('.js-toggle-follow').click(function (e) {
+                e.preventDefault();
+                var button = $(e.target);
+                $.post("/api/Followings", { followeeId: button.attr('data-user-id'), status: true })
+                    .done(function () {
+                        button
+                            .removeClass("btn btn-default btn-sm js-toggle-follow")
+                            .addClass('js-toggle-unfollow')
+                            .text('Following');
+                        
                         alert('Following Success!');
+                    })
+                    .fail(function () {
+                        alert('Something failed!');
+                    });
+
+            });
+
+            // unfollow
+            $('.js-toggle-unfollow').click(function (e) {
+                e.preventDefault();
+                var button = $(e.target);
+                $.post("/api/Followings", { followeeId: button.attr('data-user-id'), status: false })
+                    .done(function () {
+                        button
+                            .addClass("btn btn-default btn-sm js-toggle-follow")
+                            .removeClass('js-toggle-unfollow')
+                            .text('Follow');
+                            
+                        alert('Unfollow Success!');
                     })
                     .fail(function () {
                         alert('Something failed!');
